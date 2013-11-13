@@ -19,4 +19,14 @@ $config['system'] = '../system';
 */
 
 
+//include the system directory
+if(!empty($config['system'])){
+	require_once(rtrim($config['system'],'/').'/core/start.php');
+}
+else {
+	echo 'System directory was not found!';
+}
+
+//include the start config
+
 ?>
