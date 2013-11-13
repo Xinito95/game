@@ -68,15 +68,17 @@ switch($id) {
                     $id = $_GET['id'];
                     $level = 1;
                     $levelrow = $row['buildinglevel'];
-                    $nextlevel = 1;
+                    $nextlevel = $level + $levelrow;
                     
-                    $updatel = "UPDATE towns_buildings SET buildinglevel = :buildinglevel WHERE accountid = :accountid AND townid = :townid";
+                    $updatel = "UPDATE towns_buildings SET buildinglevel = :buildinglevel WHERE accountid = :accountid AND townid = :townid AND buildingtype = :buildingtype";
                     $updatell = $db->prepare($updatel);
                     $updatell->bindParam(':buildinglevel', $nextlevel);
-                    //$updatell->bindParam(':buildingtype', $id);
+                    $updatell->bindParam(':buildingtype', $id);
                     $updatell->bindParam(':accountid', $_SESSION['accountid']);
                     $updatell->bindParam(':townid', $_SESSION['townid']);
-                    header('Location: town.php');
+                    $updatell->execute();
+                    echo "test";
+                    //header('Location: town.php');
                     
                 } else if (!isset($_POST['submit'])) {
                     
