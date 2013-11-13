@@ -1,4 +1,4 @@
-game
+Game
 ====
 
-Browser Game
+Copyrights belong to Xinito95
